@@ -1,44 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Portafolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-</head>
+    <head>
+        <link rel="stylesheet" href="./style.css" />
+        <title>Calculadora de hidratación</title>
+    </head>    
 <body>
-  <header>
-    <div class="container">
-      <h1>Mi Portafolio</h1>
-      <p>Bienvenido a mi portafolio. Aquí puedes encontrar mis proyectos en GitHub.</p>
+    <div id="contenedor">
+        <div id="calculadora">
+            <div class="contenido">
+                <h1>Hidratación Basal</h1>
+                <input type="number" placeholder="Peso en kg" />
+                <p>* Debe completar todos los datos</p>
+                <button>Calcular</button>
+                <p>71cc/h</p>
+                <p>m+m/2 : 105cc/h</p>
+            </div>
+        </div>
+        <div id="detalle">
+            <div class="contenido">
+                <h1>¿Como se calcula?</h1>
+                <ul>
+                    <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>
+                    <li>Se suman 50cc por cada kilo de peso por arriba de 10kg, hasta 20kg</li>
+                    <li>De 20kg para arriba, se suman 20cc por cada kilo adicional</li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </header>
-
-  <section class="projects">
-    <div class="container">
-      <h2>Mis Proyectos</h2>
-      <div class="project">
-        <img src="project1.jpg" alt="Proyecto 1">
-        <h3>Proyecto 1</h3>
-        <p>Descripción del proyecto 1.</p>
-        <a href="#" class="btn">Ver en GitHub</a>
-      </div>
-      <!-- Agrega más proyectos según sea necesario -->
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>Sígueme en las redes sociales</p>
-      <div class="social-icons">
-        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-        <!-- Agrega más íconos según sea necesario -->
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
