@@ -1,61 +1,106 @@
-const CALCULAR = document.getElementById('calcular');
-const ERROR = document.getElementById('error');
-const FLU = document.getElementById('flu');
-const MAN = document.getElementById('man');
-const INPUT = document.getElementById('peso');
-//Al presionar calcular 
-CALCULAR.addEventListener('click', procedimiento);
-//Al presionar enter en el input
-INPUT.addEventListener('keypress', function (event) {
+const button = document.getElementById("guess-button");
+
+const input = document.getElementById("guess-input");
+const valor = input.value;
+
+
+let intentos = 6;
+let diccionario = ['APPLE', 'HURLS', 'WINGS', 'YOUTH']
+const palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
+
+window.addEventListener('load', init)
+
+function init(){
+    console.log('Esto se ejecuta solo cuando se carga la pagina web')
+}
+
+button.addEventListener("click", intentar);
+input.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        procedimiento();
+        intentar();
         event.preventDefault();
     }
 });
 
+function intentar(){
+    const INTENTO = leerIntento();
+    if (INTENTO === palabra ) {
+        terminar("<h1>GANASTE!😀</h1>");
+        
+    }
+    //----------------
+    const GRID = document.getElementById("grid");
+    const ROW = document.createElement('div');
+    ROW.className = 'row';
+    for (let i in palabra){
+        const SPAN = document.createElement('span');
+        SPAN.className = 'letter';
+        if (INTENTO[i]===palabra[i]){ //VERDE
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#79b851';
+        } else if( palabra.includes(INTENTO[i]) ) { //AMARILLO
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#f3c237';
+        } else {      //GRIS
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#a4aec4';
+        }
+        ROW.appendChild(SPAN)
+    }
+    GRID.appendChild(ROW)
 
-function calculo(peso) {
-    let valor; 
-    if (peso > 20) {
-        valor = 1500+((peso-20)*20);
-    } else if (peso > 10) {
-        valor = 1000+((peso-10)*50);
-    }else{
-        valor = peso*100;
-    } 
-    valor = valor/24;
-    return valor.toFixed(0);
-}
-
-function superficieCoporal(peso) {
-    let valor = ((peso*4) + 7) / (peso + 90);
-    return valor;
-
-}
-function procedimiento() {
-    const DATO = document.getElementById('peso').value;
-    if (DATO > 30) {
-        let flujo = superficieCoporal(DATO);
-        let diario1=flujo*1500;
-        let diario2=flujo*2000;
-        FLU.innerHTML='Valor 1500: '+diario1.toFixed(0)+' cc/hr'
-        MAN.innerHTML='Valor 2000: '+diario2.toFixed(0)+' cc/hr'
-        FLU.style.display = 'block';
-        MAN.style.display = 'block';
-    }else if (DATO > 0){
-        ERROR.style.display = 'none'
-        //console.log(calculo(DATO));
-        //let flujo = calcFlujo(DATO);
-        //let mantenimiento = flujo*1.5;
-        let flujo = calculo(DATO);
-        let mantenimiento = flujo*1.5;
-        FLU.innerHTML = flujo + ' cc/hr';
-        MAN.innerHTML = 'm+m/2 ' + mantenimiento + ' cc/hr';
-        FLU.style.display = 'block';
-        MAN.style.display = 'block';
-    } else {
-        ERROR.style.display = 'block';
-        FLU.style.display = 'none';
-        MAN.style.display = 'none';
+    //----------------
+    /*
+    for (let i in palabra){
+        if (INTENTO[i]===palabra[i]){
+            console.log(INTENTO[i], "VERDE")
+        } else if( palabra.includes(INTENTO[i]) ) {
+            console.log(INTENTO[i], "AMARILLO")
+        } else {
+            console.log(INTENTO[i], "GRIS")
+        }
+    }
+    */
+		intentos--
+    if (intentos==0){
+        terminar("<h1>PERDISTE!😖</h1>");
     }
 }
+
+function matrizFinal(INTENTO) {
+    const GRID = document.getElementById("grid");
+    const ROW = document.createElement('div');
+    ROW.className = 'row';
+    for (let i in palabra){
+        const SPAN = document.createElement('span');
+        SPAN.className = 'letter';
+        if (INTENTO[i]===palabra[i]){ //VERDE
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#79b851';
+        } else if( palabra.includes(INTENTO[i]) ) { //AMARILLO
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#f3c237';
+        } else {      //GRIS
+            SPAN.innerHTML = INTENTO[i];
+            SPAN.style.backgroundColor = '#a4aec4';
+        }
+        ROW.appendChild(SPAN)
+    }
+    GRID.appendChild(ROW)
+}
+
+function leerIntento(){
+    let intento = document.getElementById("guess-input");
+    intento = intento.value;
+    intento = intento.toUpperCase(); 
+    return intento;
+}
+
+function terminar(mensaje){
+    const INPUT = document.getElementById("guess-input");
+    INPUT.disabled = true;
+    button.disabled = true;
+    let contenedor = document.getElementById('guesses');
+    contenedor.innerHTML = mensaje;
+}
+
