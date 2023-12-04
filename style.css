@@ -1,52 +1,68 @@
+html,
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-     
-  h1 {
-    text-align: center;
-    margin-top: 50px;
-  }
-     
-  #guess-input {
-    display: block;
-    margin: 0 auto 20px;
-    padding: 10px;
-    font-size: 18px;
-    width: 250px;
-    border: 1px solid #ccc;
-  }
-     
-  #guess-button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #0CBABA;
+  display: contents;
+  width: 100%;
+  height: 100%;
+}
+h1{
     color: #fff;
-    border: none;
-    border-radius: 3px;
-  }
-     
-  button:active {
-      transform: scale(0.95);
-  }
-     
-  .letter {
-      border: 1px solid black;
-      border-radius: 10%;
-      padding: 3px;
-      margin: 3px;
-      min-width: 20px;
-      text-align: center;
-      display: inline-block
-  }
-     
-  .row{
-      margin-bottom: 10px;
-  }
-     
-  .input-area{
-      margin: 30px;
-  }
- 
+    font-family: "Lucida Console", Monaco, monospace;
+}
+button {
+  background: rgba(25, 22, 84, 1);
+  color: #fff;
+  border: 2px solid rgb(216, 2, 134);
+  border-radius: 0px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #d80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 #d80286;
+}
+.container {
+  width: 100%;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background: rgba(25, 22, 84, 1);
+  background: -moz-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(25, 22, 84, 1)),
+    color-stop(100%, rgba(67, 198, 172, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(25, 22, 84, 1) 0%,
+    rgba(67, 198, 172, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191654', endColorstr='#43c6ac', GradientType=1 );
+}
